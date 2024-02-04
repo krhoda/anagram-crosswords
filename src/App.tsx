@@ -49,7 +49,7 @@ function InstructionsAndDescription() {
 		<div className="instructions-holder">
 			<h3 className="instructions-h3">What is this?</h3>
 			<p>This is an anagram-crossword game powered by a Rust-based crossword generation library compiled to WebAssembly for use in the browser. It's been loaded into a standard Create-React-App in part to demonstrate it's portability. The entire game is offline capable once the website has loaded!
-				More information about the tech running it, including the source of this website  <a className="themed-p" href="https://github.com/krhoda/wasm_crossword_generator">is found here.</a></p>
+				More information about the tech running it, including the source of this website  <a className="themed-p" href="https://github.com/krhoda/anagram-crosswords">is found here.</a></p>
 			<h3 className="instructions-h3">How do I play?</h3>
 			<p>The solution to the crossword below only includes words composed of the letters presented in the bottom buttons, and includes at least one word that uses all of the letters.
 				<br />

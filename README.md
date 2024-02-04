@@ -1,6 +1,9 @@
 # Create-React-App + WASM Anagram Crossword Game
 
-This directory contains a working demo using the `wasm_crossword_generator` npm package. If you have npm installed, you can simply clone this repository, open a terminal in this directory and run:
+This directory contains a working demo using the `wasm_crossword_generator` npm package.
+It can be viewed/played in the browser at `<https://krhoda.github.io/anagram-crosswords>`.
+
+To run it locally, you must have npm installed. Then you can simply clone this repository, open a terminal in this directory and run:
 ```
 $ npm i
 $ npm start
