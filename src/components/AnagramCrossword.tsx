@@ -75,8 +75,9 @@ export default function AnagramCrossword({ getClient }: AnagramCrosswordProps) {
 			}
 		}
 
-		setIsComplete(false);
+		console.log("Yes, the answer is in the dev console:");
 		console.log(puzzle);
+		setIsComplete(false);
 		setPuzzleContainer(puzzle);
 		setSolutionChars(shuffleString(nextSolutionChars));
 		setBadGuesses([]);
@@ -84,14 +85,17 @@ export default function AnagramCrossword({ getClient }: AnagramCrosswordProps) {
 
 	let [selectedLetters, setSelectedLetters] = useState(initialSelectedLetters);
 
-	useEffect(() => {
+	const puzzleEffect = () => {
 		newPuzzle();
 		return () => {
+			setIsComplete(false);
 			setPuzzleContainer(initPuzzleContainer);
 			setSolutionChars("");
 			setSelectedLetters(initialSelectedLetters);
 		}
-	}, []);
+	};
+
+	useEffect(puzzleEffect, []);
 
 	function letterSelectorHandler(c: string, i: number) {
 		if (selectedLettersContains(c, i)) {
