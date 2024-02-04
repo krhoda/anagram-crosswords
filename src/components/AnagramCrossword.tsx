@@ -107,7 +107,7 @@ export default function AnagramCrossword({ getClient }: AnagramCrosswordProps) {
 	function selectedLettersContains(c: string, i: number): boolean {
 		for (let j = 0, x = selectedLetters.length; j < x; j++) {
 			let sl = selectedLetters[j];
-			if (sl.letter == c && sl.index == i) {
+			if (sl.letter === c && sl.index === i) {
 				return true;
 			}
 		}
@@ -132,12 +132,12 @@ export default function AnagramCrossword({ getClient }: AnagramCrosswordProps) {
 				}
 			});
 
-			if (guess_result == "Wrong") {
+			if (guess_result === "Wrong") {
 				alert("Wrong guess!");
 				setBadGuesses([...badGuesses, selectedLetters.map((sl) => {
 					return sl.letter;
 				}).join("")]);
-			} else if (guess_result == "Complete") {
+			} else if (guess_result === "Complete") {
 				alert("Increadible! You've won!");
 				setIsComplete(true);
 			} else {
