@@ -83,6 +83,7 @@ export default function AnagramCrossword({ getClient }: AnagramCrosswordProps) {
 	};
 
 	let [selectedLetters, setSelectedLetters] = useState(initialSelectedLetters);
+
 	useEffect(() => {
 		newPuzzle();
 		return () => {
@@ -202,49 +203,3 @@ export default function AnagramCrossword({ getClient }: AnagramCrosswordProps) {
 		</Fragment>
 	);
 };
-
-// <LetterSelector solutionChars={solutionChars} selectedLetters={selectedLetters} setSelectedLetters={setSelectedLetters} />
-
-type LetterSelectorProps = {
-	solutionChars: string,
-	selectedLetters: Array<SelectedLetter>,
-	setSelectedLetters: (nextSelectedLetters: Array<SelectedLetter>) => void,
-};
-
-function LetterSelector({ solutionChars, selectedLetters, setSelectedLetters }: LetterSelectorProps) {
-	const charArray = solutionChars.split("");
-	function f(c: string, i: number): SelectedLetter {
-		return { letter: c, index: i }
-	};
-
-	return (
-		<div className="letter-container">
-			{charArray
-				.map(f)
-				.map(
-					(selectedLetter) => (
-						<button
-							key={`${selectedLetter.letter}-${selectedLetter.index}`}
-							className={
-								`letter-button letter-button-${selectedLetters.includes(selectedLetter) ? "selected" : "unselected"}`
-							}
-							onClick={() => {
-								if (selectedLetters.includes(selectedLetter)) {
-									setSelectedLetters([]);
-								} else {
-									setSelectedLetters([
-										...selectedLetters,
-										selectedLetter
-									]);
-								}
-							}}
-
-						>
-							{selectedLetter.letter}
-						</button>
-					)
-				)
-			}
-		</div>
-	);
-}
