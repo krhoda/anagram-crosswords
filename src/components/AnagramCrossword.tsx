@@ -29,6 +29,66 @@ function shuffleString(s: string): string {
 	return a.join("");
 }
 
+const exclaimations = [
+	"Amazing",
+	"Astonishing",
+	"Astounding",
+	"Awe-inspiring",
+	"Breathtaking",
+	"Brilliant",
+	"Dazzling",
+	"Delightful",
+	"Extraordinary",
+	"Excellent",
+	"Exceptional",
+	"Exquisite",
+	"Fantastic",
+	"Formidable",
+	"Glorious",
+	"Incredible",
+	"Impressive",
+	"Magnificent",
+	"Masterful",
+	"Marvelous",
+	"Miraculous",
+	"Momentous",
+	"Outstanding",
+	"Phenomenal",
+	"Prodigious",
+	"Remarkable",
+	"Sensational",
+	"Spectacular",
+	"Splendid",
+	"Stellar",
+	"Stupendous",
+	"Stunning",
+	"Sublime",
+	"Superb",
+	"Terrific",
+	"Tremendous",
+	"Unbelievable",
+	"Unforgettable",
+	"Virtuoso",
+	"Wonderful",
+];
+
+function exclaim(): string {
+	return exclaimations[Math.floor((Math.random() * exclaimations.length))];
+}
+
+function exclaimThrice(): string {
+	let one = exclaim(), two = exclaim(), three = exclaim();
+	while (one === two) {
+		two = exclaim();
+	}
+
+	while (three === one || three === two) {
+		three = exclaim();
+	}
+
+	return `${one}! ${two}! ${three}!`
+}
+
 const initPuzzleContainer: PuzzleContainer | null = null;
 const initBadGuesses: Array<string> = [];
 
@@ -142,10 +202,17 @@ export default function AnagramCrossword({ getClient }: AnagramCrosswordProps) {
 					return sl.letter;
 				}).join("")]);
 			} else if (guess_result === "Complete") {
-				alert("Increadible! You've won!");
+				alert(`${exclaimThrice()} You've won!`);
 				setIsComplete(true);
-			} else {
-				alert("Amazing!");
+			} else if (guess_result === "Repeat") {
+				alert(`You already guessed ${selectedLetters.map((sl) => {
+					return sl.letter;
+				}).join("")
+					}!`);
+			} else if (guess_result === "Correct") {
+				alert(`${exclaim()}! ${selectedLetters.map((sl) => {
+					return sl.letter;
+				}).join("")} is part of the answer`);
 			}
 			setPuzzleContainer(puzzle_container);
 			setSelectedLetters([]);
