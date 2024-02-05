@@ -130,7 +130,7 @@ export default function AnagramCrossword({ getClient }: AnagramCrosswordProps) {
 			try {
 				puzzle = client.generate_crossword_puzzle(conf, "PerWord");
 			} catch (e) {
-				console.error(e);
+				console.log("Failed to generate puzzle, trying new word list...");
 				puzzle = null;
 			}
 		}
